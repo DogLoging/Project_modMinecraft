@@ -1,0 +1,11 @@
+#ITEMS
+item.copper_ingot.name=Copper Ingot
+item.steel_ingot.name=Steel Ingot
+item.titanium_ingot.name=Titanium Ingot
+item.adamantium_ingot.name=Adamantium Ingot
+
+#BLOCKS
+tile.copper_block.name=Copper Block
+tile.steel_block.name=Steel Block
+tile.titanium_block.name=Titanium Block
+tile.adamantium_block.name=Adamantium Block
