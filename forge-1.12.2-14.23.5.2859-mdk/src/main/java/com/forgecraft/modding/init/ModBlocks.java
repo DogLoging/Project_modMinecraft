@@ -1,6 +1,7 @@
 package com.forgecraft.modding.init;
 
 import com.forgecraft.modding.Main;
+import com.forgecraft.modding.blocks.BlockFusionFurnace;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -11,10 +12,11 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModBlocks
 {
-	public static Block copper_block, steel_block, titanium_block, adamantium_block;
+	public static Block copper_block, steel_block, titanium_block, adamantium_block,
+						fusion_furnace;
 	
-	public static Block[] listBlock = new Block[4];
-	public static Item[] listItem = new Item[4];
+	public static Block[] listBlock = new Block[5];
+	public static Item[] listItem = new Item[5];
 	private static int id;
 	
 	public static void registerBlock(IForgeRegistry<Block> event)
@@ -33,6 +35,8 @@ public class ModBlocks
 		steel_block = register("steel_block", new Block(Material.IRON)).setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		titanium_block = register("titanium_block", new Block(Material.IRON)).setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		adamantium_block = register("adamantium_block", new Block(Material.IRON)).setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
+		
+		fusion_furnace = register("fusion_furnace", new BlockFusionFurnace()).setCreativeTab(CreativeTabs.DECORATIONS);
 	}
 	
 	private static Block register(String name, Block block)
