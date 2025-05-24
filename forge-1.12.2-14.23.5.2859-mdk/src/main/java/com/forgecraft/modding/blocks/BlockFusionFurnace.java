@@ -42,15 +42,13 @@ public class BlockFusionFurnace extends BlockContainer implements ITileEntityPro
 		super(Material.IRON);
 		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH).withProperty(PROCESS, false));
 	}
-	
 	@Override
-	public void onBlockAdded(World world, BlockPos pos, IBlockState state)
-	{
-		super.onBlockAdded(world, pos, state);
-		this.setDeafultFacing(world, pos, state);
-	}
+    public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state)
+    {
+        this.setDefaultFacing(worldIn, pos, state);
+    }
 	
-	private void setDeafultFacing(World world, BlockPos pos, IBlockState state)
+	private void setDefaultFacing(World world, BlockPos pos, IBlockState state)
 	{
 		if(!world.isRemote)
 		{
@@ -86,13 +84,10 @@ public class BlockFusionFurnace extends BlockContainer implements ITileEntityPro
 	{
 		if(!world.isRemote)
 		{
-			return true;
-		}
-		else
-		{
 			player.openGui(Main.instance, Main.ENUM_GUI.FUSION_FURNACE.ordinal(), world, pos.getX(), pos.getY(), pos.getZ());
-			return true;
 		}
+		
+		return true;
 	}
 	
 	public static void setState(boolean bool, World world, BlockPos pos)

@@ -8,7 +8,7 @@
 		
 		"facing=south,process=false":
 		{
-			"model": "forgecrat:fusion_furnace",
+			"model": "forgecraft:fusion_furnace",
 			"y": 180
 		},
 		

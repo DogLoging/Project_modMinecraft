@@ -9,6 +9,7 @@ tile.copper_block.name=Copper Block
 tile.steel_block.name=Steel Block
 tile.titanium_block.name=Titanium Block
 tile.adamantium_block.name=Adamantium Block
+tile.fusion_furnace.name=Fusion Furnace
 
 #GUI
 container.name=Fusion Furnace

@@ -6,8 +6,8 @@
 		"up": "forgecraft:blocks/fusion_furnace_top",
 		"down": "forgecraft:blocks/fusion_furnace_bottom",
 		"north": "forgecraft:blocks/fusion_furnace_front",
-		"south": "forgecraft:blocks/fusion_furnace_side",
-		"west": "forgecraft:blocks/fusion_furnace_side",
 		"east": "forgecraft:blocks/fusion_furnace_side",
+		"south": "forgecraft:blocks/fusion_furnace_side",
+		"west": "forgecraft:blocks/fusion_furnace_side"
 	} 
 }

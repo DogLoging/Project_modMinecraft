@@ -53,7 +53,7 @@ public class GUIFusionFurnace extends GuiContainer
 		if(TileEntityFusionFurnace.isFuel(inventoryFusionFurnace))
 		{
 			int fuelLevel = getFuelLevel(24);
-			drawTexturedModalRect(marginHorizontal + 48, marginVertical + 22, 4, 167, fuelLevel, 14);
+			drawTexturedModalRect(marginHorizontal + 48, marginVertical + 55, 4, 167, fuelLevel, 14);
 		}
 		
 		int fusionTimeLevel = getFusionTimeLevel(13);

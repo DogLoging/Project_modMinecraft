@@ -253,7 +253,6 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 			{
 				return 1;
 			}
-	
 		}
 	}
 
@@ -407,8 +406,8 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 					BlockFusionFurnace.setState(false, world, pos);
 				}
 				
-				fuel += getItemFuel(stack);
-				
+					fuel += getItemFuel(stack);
+					
 				if(this.isFuel())
 				{
 					flag_1 = true;
@@ -425,51 +424,51 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 						}
 					}
 				}
+			}
 				
-				if(this.isFuel())
+			if(this.isFuel())
+			{
+				if(this.fuel > getMaxFuel())
 				{
-					if(this.fuel > getMaxFuel())
-					{
-						this.fuel = getMaxFuel();
-					}
+					this.fuel = getMaxFuel();
+				}
+				
+				BlockFusionFurnace.setState(true, world, pos);
+				
+				if(canFusion())
+				{
+					timeFusion += 1;
 					
-					BlockFusionFurnace.setState(true, world, pos);
-					
-					if(canFusion())
+					if(timeFusion >= maxFusion)
 					{
-						timeFusion += 1;
+						burnProcess += 1;
+						timeFusion = 0;
+						maxFusion = getTimeFusion(fuel);
 						
-						if(timeFusion == maxFusion)
+						if(burnProcess >= 8)
 						{
-							burnProcess += 10;
-							timeFusion = 0;
-							maxFusion = getTimeFusion(fuel);
+							timeProcess += 10;
+							fuel -= 50;
+							burnProcess = 0;
 							
-							if(burnProcess == 8)
+							if(timeProcess >= maxTime)
 							{
-								timeProcess += 10;
-								fuel -= 50;
-								burnProcess = 0;
-								
-								if(timeProcess == maxTime)
-								{
-									fusionItem();
-									maxTime = getProcessTime(this.fusionItemStack.get(0), this.fusionItemStack.get(1));
-									timeProcess = 0;
-									flag_1 = true;
-								}
+								fusionItem();
+								maxTime = getProcessTime(this.fusionItemStack.get(0), this.fusionItemStack.get(1));
+								timeProcess = 0;
+								flag_1 = true;
 							}
 						}
 					}
-					else
-					{
-						timeProcess = 0;
-						timeFusion = 0;
-						burnProcess = 0;
-					}
 				}
-				if(flag != isFuel()) flag_1 = true;
+				else
+				{
+					timeProcess = 0;
+					timeFusion = 0;
+					burnProcess = 0;
+				}
 			}
+			if(flag != isFuel()) flag_1 = true;
 		}
 		if(flag_1) markDirty();
 	}
