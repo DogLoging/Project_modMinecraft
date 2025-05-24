@@ -1,0 +1,50 @@
+{
+	"variants":
+	{
+		"facing=north,process=false":
+		{
+			"model": "forgecraft:fusion_furnace"
+		},
+		
+		"facing=south,process=false":
+		{
+			"model": "forgecrat:fusion_furnace",
+			"y": 180
+		},
+		
+		"facing=west,process=false":
+		{
+			"model": "forgecraft:fusion_furnace",
+			"y": 270
+		},
+		
+		"facing=east,process=false":
+		{
+			"model": "forgecraft:fusion_furnace",
+			"y": 90
+		},
+		
+		"facing=north,process=true":
+		{
+			"model": "forgecraft:fusion_furnace_active"
+		},
+		
+		"facing=south,process=true":
+		{
+			"model": "forgecraft:fusion_furnace_active",
+			"y": 180
+		},
+		
+		"facing=west,process=true":
+		{
+			"model": "forgecraft:fusion_furnace_active",
+			"y": 270
+		},
+		
+		"facing=east,process=true":
+		{
+			"model": "forgecraft:fusion_furnace_active",
+			"y": 90
+		}
+	} 
+}
