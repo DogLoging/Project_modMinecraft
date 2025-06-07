@@ -31,12 +31,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class TileEntityFusionFurnace extends TileEntityLockable implements IInventory, ITickable
 {
 	private NonNullList<ItemStack> fusionItemStack = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
-	private int fuel;
-	private int burnProcess;
-	private int timeProcess;
-	private int maxTime;
-	private int timeFusion;
-	private int maxFusion;
+	private int fuel, burnProcess, timeProcess, maxTime, timeFusion, maxFusion;
 	private String tileEntityName;
 	
 	@Override
@@ -103,25 +98,33 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 
 	private int getTimeFusion(int level)
 	{
-		if(level > getMaxFuel() - (getMaxFuel() / 5))
+		int speed;
+		if(level > getFuelPercentage(90))
 		{
-			return 25;
+			speed = 35;
 		}
-		else if(level > getMaxFuel() / 2)
+		else if(level > getFuelPercentage(60))
 		{
-			return 50;
+			speed = 85;
 		}
-		else if(level > getMaxFuel() / 4)
+		else if(level > getFuelPercentage(30))
 		{
-			return 150;
+			speed = 150;
 		}
 		else
 		{
-			return 200;
+			speed = 200;
 		}
+		
+		return speed;
+	}
+	
+	private int getFuelPercentage(int var)
+	{
+		return var * (getMaxFuel() / 100);
 	}
 
-	private int getMaxFuel()
+	public int getMaxFuel()
 	{
 		return 5000;
 	}

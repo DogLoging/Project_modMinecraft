@@ -17,6 +17,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,8 +25,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -76,6 +79,51 @@ public class BlockFusionFurnace extends BlockContainer implements ITileEntityPro
 			}
 			
 			world.setBlockState(pos, state.withProperty(FACING, facing), 2);
+		}
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState state, World world, BlockPos pos, Random rand)
+	{
+		if(state.getValue(PROCESS))
+		{
+			EnumFacing facing = (EnumFacing)state.getValue(FACING);
+			double x = (double)pos.getX() + 0.5D;
+			double y = (double)pos.getY() + rand.nextDouble() * 6.0D / 16.0D;
+			double z = (double)pos.getZ() + 0.5D;
+			double d = rand.nextDouble() * 0.6D - 0.3D;
+			
+			if(rand.nextDouble() < 0.5D)
+			{
+				world.playSound((double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+			}
+			
+			switch(facing)
+			{
+			case NORTH:
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y + 1.0D, z, 0.0D, 0.10D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y + 1.0D, z, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.FLAME, x + d, y, z - 0.52D, 0.0D, 0.0D, 0.0D);
+				break;
+			case SOUTH:
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y + 1.0D, z, 0.0D, 0.10D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y + 1.0D, z, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.FLAME, x + d, y, z + 0.52D, 0.0D, 0.0D, 0.0D);
+				break;
+			case WEST:
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y + 1.0D, z, 0.0D, 0.10D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y + 1.0D, z, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.FLAME, x - 0.52D, y, z + d, 0.0D, 0.0D, 0.0D);
+				break;
+			case EAST:
+				world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, x, y + 1.0D, z, 0.0D, 0.10D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, x, y + 1.0D, z, 0.0D, 0.0D, 0.0D);
+				world.spawnParticle(EnumParticleTypes.FLAME, x + 0.52D, y, z + d, 0.0D, 0.0D, 0.0D);
+				break;
+				default:
+					break;
+			}
 		}
 	}
 	

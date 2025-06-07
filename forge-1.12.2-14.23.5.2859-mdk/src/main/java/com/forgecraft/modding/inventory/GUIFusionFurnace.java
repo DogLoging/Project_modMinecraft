@@ -66,20 +66,20 @@ public class GUIFusionFurnace extends GuiContainer
 	private int getProcessTimeLevel(int pixel)
 	{
 		int currentProcess = inventoryFusionFurnace.getField(1);
-		int maxProcess = inventoryFusionFurnace.getField(3);
+		int maxProcess = pixel * (inventoryFusionFurnace.getField(3) / 22);
 		return maxProcess != 0 && currentProcess != 0 ? currentProcess * pixel / maxProcess : 0;
 	}
 
 	private int getFusionTimeLevel(int pixel)
 	{
 		int currentFusion = inventoryFusionFurnace.getField(0);
-		int maxFusion = inventoryFusionFurnace.getField(2);
+		int maxFusion = pixel * (inventoryFusionFurnace.getField(2) / 13);
 		return maxFusion != 0 && currentFusion != 0 ? currentFusion * pixel / maxFusion : 0;
 	}
 	
 	private int getFuelLevel(int pixel)
 	{
-		int maxFuel = 5000 / 4;
+		int maxFuel = pixel * (5000 / 96);
 		return inventoryFusionFurnace.getField(5) * pixel / maxFuel;
 	}
 }

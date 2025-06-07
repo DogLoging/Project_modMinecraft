@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+		"###",
+		"###",
+		"###"
+	],
+	
+	"key":
+	{
+		"#":
+		{
+			"item": "forgecraft:adamantium_ingot"
+		}
+	},
+	
+	"result":
+	{
+		"item": "forgecraft:adamantium_block",
+		"count": 1
+	}
+}

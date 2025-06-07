@@ -18,12 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ContainerFusionFurnace extends Container
 {
 	private final IInventory tileFusionFurnace;
-	private int fuel;
-	private int burnProcess;
-	private int timeFusion;
-	private int maxFusion;
-	private int timeProcess;
-	private int maxTime;
+	private int fuel, burnProcess, timeProcess, maxTime, timeFusion, maxFusion;
 	
 	public ContainerFusionFurnace(InventoryPlayer playerInventory, IInventory inventory)
 	{

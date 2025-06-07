@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern":
+	[
+		"###",
+		"###",
+		"###"
+	],
+	
+	"key":
+	{
+		"#":
+		{
+			"item": "forgecraft:steel_ingot"
+		}
+	},
+	
+	"result":
+	{
+		"item": "forgecraft:steel_block",
+		"count": 1
+	}
+}
