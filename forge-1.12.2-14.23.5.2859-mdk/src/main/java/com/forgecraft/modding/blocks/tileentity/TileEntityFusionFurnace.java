@@ -403,13 +403,9 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 			{
 				ItemStack stack = this.fusionItemStack.get(2);
 				
-				if(this.fuel < 0)
-				{
-					this.fuel = 0;
-					BlockFusionFurnace.setState(false, world, pos);
-				}
+				if(this.fuel < 0) this.fuel = 0;
 				
-					fuel += getItemFuel(stack);
+				fuel += getItemFuel(stack);
 					
 				if(this.isFuel())
 				{
@@ -431,15 +427,11 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 				
 			if(this.isFuel())
 			{
-				if(this.fuel > getMaxFuel())
-				{
-					this.fuel = getMaxFuel();
-				}
-				
-				BlockFusionFurnace.setState(true, world, pos);
+				if(this.fuel > getMaxFuel()) this.fuel = getMaxFuel();
 				
 				if(canFusion())
 				{
+					BlockFusionFurnace.setState(true, world, pos);
 					timeFusion += 1;
 					
 					if(timeFusion >= maxFusion)
@@ -447,11 +439,11 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 						burnProcess += 1;
 						timeFusion = 0;
 						maxFusion = getTimeFusion(fuel);
+						fuel -= 1;
 						
 						if(burnProcess >= 8)
 						{
 							timeProcess += 10;
-							fuel -= 50;
 							burnProcess = 0;
 							
 							if(timeProcess >= maxTime)
@@ -466,13 +458,16 @@ public class TileEntityFusionFurnace extends TileEntityLockable implements IInve
 				}
 				else
 				{
+					BlockFusionFurnace.setState(false, world, pos);
 					timeProcess = 0;
 					timeFusion = 0;
 					burnProcess = 0;
 				}
 			}
+			
 			if(flag != isFuel()) flag_1 = true;
 		}
+		
 		if(flag_1) markDirty();
 	}
 

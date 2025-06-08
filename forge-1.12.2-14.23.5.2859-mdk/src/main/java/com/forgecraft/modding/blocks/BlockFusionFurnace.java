@@ -128,6 +128,19 @@ public class BlockFusionFurnace extends BlockContainer implements ITileEntityPro
 	}
 	
 	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
+	{
+		if(state.getValue(PROCESS))
+		{
+			return 15;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+	
+	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float x, float y, float z)
 	{
 		if(!world.isRemote)
@@ -142,7 +155,6 @@ public class BlockFusionFurnace extends BlockContainer implements ITileEntityPro
 	{
 		IBlockState state = world.getBlockState(pos);
 		TileEntity tileEntity = world.getTileEntity(pos);
-		
 		world.setBlockState(pos, ModBlocks.fusion_furnace.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(PROCESS, bool), 3);
 		
 		if(tileEntity != null)
@@ -152,19 +164,6 @@ public class BlockFusionFurnace extends BlockContainer implements ITileEntityPro
 		}
 		
 		world.checkLight(pos);
-	}
-	
-	@Override
-	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos)
-	{
-		if(state.getValue(PROCESS))
-		{
-			return 15;
-		}
-		else
-		{
-			return 0;
-		}
 	}
 
 	@Override
@@ -219,7 +218,7 @@ public class BlockFusionFurnace extends BlockContainer implements ITileEntityPro
 	@Override
 	protected BlockStateContainer createBlockState()
 	{
-		return new BlockStateContainer(this, new IProperty[] {PROCESS, FACING});
+		return new BlockStateContainer(this, new IProperty[] {FACING, PROCESS});
 	}
 	
 	@Override

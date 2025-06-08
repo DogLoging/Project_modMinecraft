@@ -28,19 +28,19 @@
 		{
 			"model": "forgecraft:fusion_furnace_active"
 		},
-		
+
 		"facing=south,process=true":
 		{
 			"model": "forgecraft:fusion_furnace_active",
 			"y": 180
 		},
-		
+
 		"facing=west,process=true":
 		{
 			"model": "forgecraft:fusion_furnace_active",
 			"y": 270
 		},
-		
+
 		"facing=east,process=true":
 		{
 			"model": "forgecraft:fusion_furnace_active",
